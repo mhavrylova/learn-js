@@ -8,22 +8,43 @@
 <body>
     <h2>Теорія</h2>
     <p>
-        Для того, щоб вставити скріпт в будь-яку частину сторінки, використовують тег <code>&lt;script&gt;</code>
+        Для того, щоб вставити скріпт в будь-яку частину сторінки, використовують тег <span class="code">&lt;script&gt;</span>.
+        В старому коді (HTML, HTML4) можуть зустрічатись застарілі атрибути для цього тегу -
+        <span class="code">type</span> та <span class="code">language</span>.
+    </p>
+    <p>
+        Великий JS код краще помістити в окремий файл, підключивши його до HTML з використанням атрибуту
+        <span class="code">src</span>
+        <code>
+            &lt;script src="/path/to/script.js"&gt;&lt;/script&gt;
+        </code>
+        При цьому, в сам тег вже код вписати не можна, він буде ігноруватись.
     </p>
     <h2>Задачі</h2>
     <div>
-        <h4>Задача 1</h4>
-        <p>Опис задачі тут</p>
+        <h4>Задача 1. Викликати alert</h4>
+        <p>Створіть сторінку, яка показуватиме повідомлення “Я – JavaScript!”.</p>
         <h5>Рішення</h5>
-        <p><code>code here</code></p>
-        <p><a href="#">See Result</a></p>
+        <p>
+            <code>
+                &lt;script><br>&nbsp;&nbsp;&nbsp;&nbsp;alert('Я – JavaScript!');<br>&lt;/script>
+            </code>
+        </p>
+        <p><a href="tasks/task1.html">See Result</a></p>
     </div>
     <div>
-        <h4>Задача 2</h4>
-        <p>Опис задачі тут</p>
+        <h4>Задача 2. Показати повідомлення із зовнішнього скрипта</h4>
+        <p>
+            Використайте розв’язок з попереднього завдання.
+            Змініть його так, щоб вміст скрипта знаходився в зовнішньму файлі <span class="code">alert.js</span>, який буде знаходитися в тій самій папці.
+        </p>
         <h5>Рішення</h5>
-        <p><code>code here</code></p>
-        <p><a href="#">See Result</a></p>
+        <p>
+            <code>
+                &lt;script src="alert.js">&lt;/script>
+            </code>
+        </p>
+        <p><a href="tasks/task2.html">See Result</a></p>
     </div>
 </body>
 </html>
