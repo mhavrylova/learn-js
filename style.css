@@ -38,7 +38,8 @@ h4 {
 
 h5 {
     margin: 12px 0 8px 0;
-    font-size: 14px;
+    font-size: 16px;
+    color: dodgerblue;
 }
 
 p {
@@ -66,4 +67,15 @@ code {
     font-family: monospace;
     background: #E7ECF1;
     border-radius: 2px;
+}
+
+.book-link {
+    text-decoration: none;
+    color: #aaaaaa;
+    font-weight: 600;
+}
+
+.date {
+    font-weight: 600;
+    color: red;
 }
