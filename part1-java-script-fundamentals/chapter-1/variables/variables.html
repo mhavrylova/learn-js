@@ -12,23 +12,16 @@
         Змінна - це іменоване сховище даних, в якому зберігається якась інформація,
         потрібна для розробки (наприклад, ім'я юзера, товар в інтернет магазині).
         Змінну створюють за допомогою ключового слова <span class="code">let</span> (застаріла <span class="code">var</span>).
+        Між <span class="code">var</span> та <span class="code">let</span> існує <a href="https://learn.javascript.ru/var">різниця</a>. <span class="notabene">Це часте питання джунам на співбесіді</span>>
         створимо (оголосимо) змінну <span class="code">name</span> та помістимо в неї дані (оголосимо/визначимо змінну)
         <code>
-            let name;
+            let name; // зараз в змінні значення undefined
             <br>
             name = 'Marina';
         </code>
         Ми зберегли строку 'Marina' в змінній <span class="code">name</span>. Можна одразу записати ім'я в змінну:
         <code>
             let name = 'Marina';
-        </code>
-        можна записати багато змінних під однією <span class="code">let</span>
-        <code>
-            let user = 'John',
-            <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;age = 25,
-            <br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;message = 'Hello';
         </code>
 
     </p>
@@ -58,12 +51,11 @@
         Імена змінних повинні містити лише букви, цифри (але ім'я змінної не може починатись з цифри), символи <span class="code">$</span> та <span class="code">_</span>.
         <br/> Якщо в імені змінної декілька слів - можна використати camelCase.
         <br/> Має значення регіст літер: <span class="code">name</span> i <span class="code">NAME</span> - це різні змінні.
-        <br/> Можна використовувати літери ріхних мов (але це не рекомендовано)
         <br/> Існують <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Lexical_grammar#%D0%B7%D0%B0%D1%80%D0%B5%D0%B7%D0%B5%D1%80%D0%B2%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5_%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%B2%D1%8B%D0%B5_%D1%81%D0%BB%D0%BE%D0%B2%D0%B0_%D0%B2_ecmascript_2015">зарезервовані слова, які не можна використовувати як назву зміннної</a>
     </p>
     <h3>Константи</h3>
     <p>
-        Константа - змінна, яку не можна змінити/перезаписати. Для її оголошення використовують <span class="code">cons</span>.
+        Константа - змінна, яку не можна змінити/перезаписати. Для її оголошення використовують <span class="code">const</span>.
         Якщо константу спробувати змінити, виникне помилка.
     </p>
     <h2>Задачі</h2>
