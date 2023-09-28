@@ -1,6 +1,6 @@
-export const isValid = "is valid";
-export const isInValid = "is invalid";
-export const myString1 = "I am frontend developer"; // invalid
-export const myString2 = "I'm frontend developer"; // valid
-export const myString3 = "Ifd"; // invalid
-export const myString4 = 123; // invalid
+export const IS_VALID = "is valid";
+export const IS_INVALID = "is invalid";
+export const InvalidCaseWithA = "I am frontend developer"; // invalid
+export const ValidCase = "I'm frontend developer"; // valid
+export const InvalidCaseWithSmallLength = "Ifd"; // invalid
+export const InvalidCaseWithDifferentType = 123; // invalid

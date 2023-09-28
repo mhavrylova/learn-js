@@ -1,12 +1,11 @@
-export default function validate(string) {
-    if (string.length <= 3) {
-        return false;
-    }
-    if (typeof string !== 'string') {
-        return false;
-    }
-    if (string.includes('a')) {
-        return false;
-    }
-    return true;
+export function checkIfLongLength(string) {
+    return string.length > 3;
+}
+
+export function checkIfHasNotA(string) {
+    return !String(string).includes('a');
+}
+
+export function checkIfIsDifferType(string) {
+    return typeof string === 'string';
 }

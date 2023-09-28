@@ -1,7 +1,7 @@
-import { myString1, myString2, myString3, myString4 } from './constants.js';
+import { InvalidCaseWithA, ValidCase, InvalidCaseWithSmallLength, InvalidCaseWithDifferentType } from './constants.js';
 import validateString from './actions.js';
 
-console.log(validateString(myString1));
-console.log(validateString(myString2));
-console.log(validateString(myString3));
-console.log(validateString(myString4));
+console.log(validateString(InvalidCaseWithA));
+console.log(validateString(ValidCase));
+console.log(validateString(InvalidCaseWithSmallLength));
+console.log(validateString(InvalidCaseWithDifferentType));
