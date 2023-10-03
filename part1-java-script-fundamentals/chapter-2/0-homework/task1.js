@@ -1,9 +1,7 @@
-function type(arg) {
-   return typeof(arg);
-}
+import checkOfType from './checkOfType.js';
 
-console.log(type(87));
-console.log(type('87'));
-console.log(type(null));
-console.log(type(5 + 8));
-console.log(type(5 + '8'));
+console.log(checkOfType(87));
+console.log(checkOfType('87'));
+console.log(checkOfType(null));
+console.log(checkOfType(5 + 8));
+console.log(checkOfType(5 + '8'));
