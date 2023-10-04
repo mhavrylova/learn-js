@@ -1,5 +1,5 @@
 export function isNumber(arg) {
-    if (typeof(arg)=='number') {
+    if (typeof(arg) == 'number') {
         return true;
     } else {
         return false;
@@ -7,7 +7,7 @@ export function isNumber(arg) {
 }
 
 export function isString(arg) {
-    if (typeof(arg)=='string') {
+    if (typeof(arg) == 'string') {
         return true;
     } else {
         return false;
