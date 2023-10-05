@@ -7,18 +7,130 @@
 </head>
 <body>
     <h2>Теорія</h2>
-    <p></p>
+    <p>
+        Інструкція <span class="code">if(...)</span> обчислює умову в дужках і перетворює результат у логічний тип, якщо результат умови true, виконує блок коду у фігурних дужках7
+        <code>
+            if (name == 'JavaScript') {
+            <br> alert( "good for you" );
+            <br>}
+        </code>
+    </p>
+    <p>
+        Вираз <span class="code">if</span> може містити необов’язковий блок <span class="code">else</span>. Він виконується, коли умова false.
+        <code>
+            if (name == 'JavaScript') {
+            <br> alert( "good for you" );
+            <br>} else {
+            <br> alert( "try again" );
+            <br>}
+        </code>
+    </p>
+    <p>
+        Щоб перевірити кілька варіантів умови, можна використати блок <span class="code">else if</span>
+        <code>
+            if (name == 'JavaScript') {
+            <br> alert( "good for you" );
+            <br>} else if (name == 'TypeScript') {
+            <br> alert( "not bad" );
+            <br>} else {
+            <br> alert( "try again" );
+            <br>}
+        </code>
+    </p>
+    <p>
+        Можна умову написати скорочено:
+        <code>
+            let result = ( умова ) ? значенняЯкщоTrue : значенняЯкщоFalse;
+        </code>
+        Для конструкції якщо умов декілька (if else) скорочено використовують декілька ?
+        <code>
+            let message = (age < 3) ? 'Привіт, крихітко!' :
+            <br>(age < 18) ? 'Вітаю!' :
+            <br>(age < 100) ? 'Моє шанування!' :
+            <br>'Який незвичайний вік!';
+        </code>
+    </p>
     <h2>Задачі</h2>
     <div>
         <h4>Задача 1</h4>
-        <p></p>
+        <p>
+            Використовуючи конструкцію if..else, напишіть код, що запитує: ‘Яка “офіційна” назва JavaScript?’
+            <br>Якщо відвідувач вводить “ECMAScript”, виведіть “Правильно!”, в іншому випадку — виведіть: “Ви не знаєте? ECMAScript!”
+        </p>
         <h5>
-            <a href="#">
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-3/conditional-branching/tasks/task1.html">
                 Рішення
             </a>
         </h5>
         <p>
-            <a href="t#">See Result</a>
+            <a href="tasks/task1.html">See Result</a>
+        </p>
+    </div>
+    <div>
+        <h4>Задача 2</h4>
+        <p>
+            Використовуючи if..else, напишіть код, що отримує число за допомогою prompt і потім виводить повідомлення alert:
+            <br>1, якщо значення більше нуля,
+            <br>-1, якщо меньше нуля,
+            <br> 0, якщо дорівнює нулю.
+            <br>У цьому завданні ми припускаємо, що введенне значення завжди є числом.
+        </p>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-3/conditional-branching/tasks/task2.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="tasks/task2.html">See Result</a>
+        </p>
+    </div>
+    <div>
+        <h4>Задача 3</h4>
+        <p>
+            Перепишіть конструкцію if, використовуючи умовний оператор '?':
+            <code>
+                let result;
+                <br>if (a + b < 4) {
+                <br>result = 'Нижче';
+                <br>} else {
+                <br>result = 'Вище';
+                <br>}
+            </code>
+        </p>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-3/conditional-branching/tasks/task3.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="tasks/task3.html">See Result</a>
+        </p>
+    </div>
+    <div>
+        <h4>Задача 4</h4>
+        <p>
+            Перепишіть if..else, використовуючи декілька тернарних операторів '?'.
+            Для зручності читання рекомендується розділити код на кілька рядків.
+            <code>
+                let message;
+                <br/>if (login == 'Працівник') {
+                <br/>message = 'Привіт';
+                <br/>} else if (login == 'Директор') {
+                <br/>message = 'Вітаю';
+                <br/>} else if (login == '') {
+                <br/>message = 'Немає логіну';
+                <br/>} else {
+                <br/>message = '';
+                <br/>}
+            </code>
+        </p>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-3/conditional-branching/tasks/task4.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="tasks/task4.html">See Result</a>
         </p>
     </div>
 </body>
