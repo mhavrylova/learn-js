@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conditional branching - Task3</title>
+</head>
+<body>
+    <script src="task4.js"></script>
+    <p>Ще декілька зручних варіантів:</p>
+    <code>
+        const sayHi = (login) => {
+        <br>if(login === 'Працівник') return 'Привіт';
+        <br>if(login === 'Директор') return 'Вітаю';
+        <br>if(login === '') return 'Немає логіну';
+        <br>return ''
+        <br>}
+        <br>alert(sayHi(login))
+    </code>
+    <br>
+    <code>
+        const sayHi = (login) =>{
+        <br>return switch(login) {
+        <br>case 'Працівник':
+        <br>return 'Привіт';
+        <br>case 'Директор':
+        <br>return 'Вітаю';
+        <br>case '':
+        <br>return 'Немає логіну';
+        <br>default:
+        <br>return ''
+        <br>}
+        <br>alert(sayHi(login))
+    </code>
+</body>
+</html>
