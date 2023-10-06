@@ -11,3 +11,10 @@ export default function checkIfEven(arg) {
         return NOT_A_NUMBER;
     }
 }
+
+// another way
+// export const checkIfEven = (num) => {
+//     if (!isNumber(num)) return NOT_A_NUMBER;
+//
+//     return isEvenNumber(num) ? EVEN_NUMBER : ODD_NUMBER
+// }

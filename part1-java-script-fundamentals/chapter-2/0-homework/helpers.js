@@ -1,23 +1,10 @@
 export function isNumber(arg) {
-    if (typeof(arg) == 'number') {
-        return true;
-    } else {
-        return false;
-    }
+    if (isNaN(arg) || typeof(arg) !== 'number') {return false;}
+    return true;
 }
 
-export function isString(arg) {
-    if (typeof(arg) == 'string') {
-        return true;
-    } else {
-        return false;
-    }
-}
+export const isString = (arg) => typeof(arg) === 'string';
 
 export function isEvenNumber(number) {
-    if (number % 2 === 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return number % 2 === 0;
 }

@@ -8,3 +8,4 @@ console.log(checkIfEven(0));
 console.log(checkIfEven(10));
 console.log(checkIfEven(false));
 console.log(checkIfEven(4 + 8));
+console.log(checkIfEven(NaN));

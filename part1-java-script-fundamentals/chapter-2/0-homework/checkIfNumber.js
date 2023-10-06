@@ -7,3 +7,12 @@ export default function checkIfNumber(arg) {
     }
     return NOT_A_NUMBER;
 }
+
+// other syntax
+//
+// export const checkIfNumber = (arg) => isNumber(arg) ? IS_A_NUMBER : NOT_A_NUMBER;
+// arrow function without {} means auto return
+//
+// export const checkIfNumber = (arg) => {
+//     return isNumber(arg) ? IS_A_NUMBER : NOT_A_NUMBER;
+// }
