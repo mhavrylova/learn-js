@@ -93,3 +93,7 @@ a.book-link {
     color: red;
     font-size: 18px;
 }
+
+img {
+    width: 100%;
+}
