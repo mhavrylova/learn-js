@@ -6,20 +6,32 @@
     <link type="text/css" href="../../../style.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Теорія</h2>
-    <p></p>
-    <h2>Задачі</h2>
-    <div>
-        <h4>Задача 1</h4>
-        <p></p>
-        <h5>
-            <a href="#">
-                Рішення
-            </a>
-        </h5>
-        <p>
-            <a href="t#">See Result</a>
-        </p>
-    </div>
+    <h2>Оператори нульового злиття та присвоювання ??</h2>
+    <p>
+        Оператор ?? повертає перший аргумент, якщо він не null/undefined, інакше - другий.
+        <code>
+             a ?? b // якщо а не null/undefined, то a. Інакше - b
+        </code>
+        це те ж саме, що
+        <code>
+            result = (a !== null && a !== undefined) ? a : b;
+        </code>
+    </p>
+    <p>
+        оператор ?? потрібен, щоб задати значення по замовчуванню для потенційно невизначеної змінної.
+    </p>
+    <p>
+        різниця || та ?? в тому, що оператор || не відрізняє false, 0, пустий рядок "" і null/undefined.
+        Для нього вони всі однакові, та являються false.
+        Якщо перший аргумент для оператора || буде щось з цих значень, то результатом буде другий аргумент.
+        <code>
+            let height = 0;
+            <br>alert(height || 100); // 100
+            <br>alert(height ?? 100); // 0
+        </code>
+    </p>
+    <p>
+        Пріоритет оператора ?? такий же як і в || <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">таблиця</a>
+    </p>
 </body>
 </html>
