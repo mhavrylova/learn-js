@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+    <link type="text/css" href="../../../style.css" rel="stylesheet">
+  </head>
+  <body>
+    <script type="module" defer src="task3.js"></script>
+    <p>Open console</p>
+    <p>list of strings</p>
+    <ul>
+      <li>InvalidCaseWithA</li>
+      <li>ValidCase</li>
+      <li>InvalidCaseWithSmallLength</li>
+      <li>InvalidCaseWithDifferentType</li>
+    </ul>
+    <br>
+    <br>
+   <p>Пояснення: в <span class="code">validateString</span> в змінну <span class="code">result</span> записується результат порівняння 3х функцій.
+     Якщо всі вони мають результат <span class="code">true</span>, то повернеться результат останньої функції, він буде <span class="code">true</span>.
+   </p>
+   <p>
+     Якщо результат будь-якої із трьох функцій буде <span class="code">false</span>, то в <span class="code">result</span> повернеться <span class="code">false</span>
+   </p>
+   <p>
+     Потім за допомогою <span class="code">switch</span> ми значення цього <span class="code">result</span> порівнюєм в <span class="code">case</span> з <span class="code">true</span>.
+     І в випадку, якщо він true, повертаємо повідомлення про валідність, інакше - про невалідність
+   </p>
+  </body>
+</html>
