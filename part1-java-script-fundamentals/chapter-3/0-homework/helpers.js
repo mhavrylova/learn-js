@@ -1,11 +1,11 @@
-export function checkIfLongLength(string) {
-    return string.length > 3;
+export function isLessThanThree(string) {
+    return string.length <= 3;
 }
 
-export function checkIfHasNotA(string) {
-    return !String(string).includes('a');
+export function hasA(string) {
+    return String(string).includes('a');
 }
 
-export function checkIfIsDifferType(string) {
+export function isString(string) {
     return typeof string === 'string';
 }
