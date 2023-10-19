@@ -97,3 +97,7 @@ a.book-link {
 img {
     width: 100%;
 }
+
+.img_sm {
+    width: 500px;
+}
