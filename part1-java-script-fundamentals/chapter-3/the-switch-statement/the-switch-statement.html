@@ -6,19 +6,90 @@
     <link type="text/css" href="../../../style.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Теорія</h2>
-    <p></p>
+    <h2>Конструкція "switch"</h2>
+    <p>
+        Конструкція <span class="code">switch</span> може замінити кілька if, має один або більше
+        <span class="code">case</span> блоків та необов’язковий блок <span class="code">default</span>
+        <code>
+            switch(x) {
+            <br>&nbsp;&nbsp;case 'value1':  // if (x === 'value1')
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;...
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;[break]
+            <br><br>
+            &nbsp;&nbsp;case 'value2':  // if (x === 'value2')
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;...
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;[break]
+            <br><br>
+            &nbsp;&nbsp;default:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;...
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;[break]
+            }
+        </code>
+        Значення змінної <span class="code">x</span> перевіряється на строгу рівність (===) значенню із першого блоку <span class="code">case</span> (яке дорівнює value1), потім значенню із другого блоку (value2) і так далі.
+        <br>Якщо строго рівне значення знайдено, то switch починає виконання коду із відповідного <span class="code">case</span> до найближчого <span class="code">break</span> або до кінця всієї конструкції <span class="code">switch</span>.
+        <br>Якщо жодне case-значення не збігається – виконується код із блоку <span class="code">default</span> (якщо він присутній).
+    </p>
+    <p>Кілька варіантів блоку case, які використовують однаковий код, можуть бути згруповані.</p>
+    <p>Перевірка відповідності є завжди строгою. Значення повинні бути однакового типу аби вони збігалися.</p>
     <h2>Задачі</h2>
     <div>
         <h4>Задача 1</h4>
-        <p></p>
+        <p>
+            Напишіть код з використанням if..else, що відповідає наступній конструкції switch:
+            <code>
+                switch (browser) {
+                <br>&nbsp;&nbsp;case 'Edge':
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;alert( "You've got the Edge!" );
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;break;
+                <br>
+                <br>&nbsp;&nbsp;case 'Chrome':
+                <br>&nbsp;&nbsp;case 'Firefox':
+                <br>&nbsp;&nbsp;case 'Safari':
+                <br>&nbsp;&nbsp;case 'Opera':
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;alert( 'Ми підтримуємо і ці браузери' );
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;break;
+                <br>
+                <br>&nbsp;&nbsp;default:
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;alert( 'Маємо надію, що ця сторінка виглядає добре!' );
+                <br>}
+            </code>
+        </p>
         <h5>
-            <a href="#">
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-3/the-switch-statement/tasks/task1.html">
                 Рішення
             </a>
         </h5>
         <p>
-            <a href="t#">See Result</a>
+            <a href="tasks/task1.html">See Result</a>
+        </p>
+    </div>
+    <div>
+        <h4>Задача 2</h4>
+        <p>
+            Перепишіть код нижче використовуючи одну конструкцію switch:
+        </p>
+        <code>
+            let a = +prompt('a?', '');
+            <br>
+            <br>&nbsp;&nbsp;if (a == 0) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;alert( 0 );
+            <br>&nbsp;&nbsp;}
+            <br>
+            <br>&nbsp;&nbsp;if (a == 1) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;alert( 1 );
+            <br>&nbsp;&nbsp;}
+            <br>
+            <br>&nbsp;&nbsp;if (a == 2 || a == 3) {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;alert( '2,3' );
+            <br>&nbsp;&nbsp;}
+        </code>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-3/the-switch-statement/tasks/task2.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="tasks/task2.html">See Result</a>
         </p>
     </div>
 </body>
