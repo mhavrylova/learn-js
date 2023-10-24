@@ -7,18 +7,48 @@
 </head>
 <body>
     <h2>Теорія</h2>
-    <p></p>
+    <code>
+        let func = (arg1, arg2, ...argN) => expression;
+    </code>
+    <p>Створюється функція func, яка приймає аргументи arg1..argN,
+        потім вираховує expression в правій частині з їхнім використанням і повертає результат.
+        <br> Можна переписати так:
+    </p>
+    <code>
+        let func = function(arg1, arg2, ...argN) {
+        <br>return expression;
+        <br>};
+    </code>
+    <p>Якщо ми маємо лише один аргумент, то круглі дужки навколо параметрів можна не ставити</p>
+    <p>Якщо аргументів нема, то круглі дужки будуть пустими, але вони повинні бути</p>
+    <p>Якщо стрілкова функія складна і містисть багато рядків, то вона повинна бути огорнути фігурними дужками.
+        І для повернення значення цієї функції необхідно використати <span class="code">return</span>
+    </p>
     <h2>Задачі</h2>
     <div>
         <h4>Задача 1</h4>
-        <p></p>
+        <p>
+           Замініть код Function Expression стрілковою функцією:
+        </p>
+        <code>
+            function ask(question, yes, no) {
+            <br>if (confirm(question)) yes()
+            <br>else no();
+            <br>}
+            <br>
+            <br>ask(
+            <br>"Вы согласны?",
+            <br>function() { alert("Вы согласились."); },
+            <br>function() { alert("Вы отменили выполнение."); }
+            <br>);
+        </code>
         <h5>
-            <a href="#">
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-5/arrow-functions-the-basics/tasks/task2.html">
                 Рішення
             </a>
         </h5>
         <p>
-            <a href="t#">See Result</a>
+            <a href="tasks/task1.html">See Result</a>
         </p>
     </div>
 </body>
