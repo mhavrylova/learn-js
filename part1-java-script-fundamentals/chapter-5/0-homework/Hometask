@@ -1,0 +1,56 @@
++1. функція обертаня рядка
+reverseString(‘blabla’) // albalb
+
++2. напиши функці для перевірки паліндромів
+isPalindrome(‘asdsa’) // true isPalindrome(‘assaa’) //false
+
+3. функцію рандом яка повертає значеня від та до
+random(3,9)// 7
+
+3.1 функція rollDice() повина рандомно бросати кубік від 1 до 6 (зробити перевірку тест на 10 000 000 ітерацій щоб зрозуміти що кожна грань падає з рівною верогідністю )
+
+4. функція генеруваня паролю
+const charset = ‘abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789’;
+generatePassword(6) // d3DSl4
+
+5 розбиття скроки на слова stringToWords(‘bla sky red you’) // [‘bla’, ‘sky’, ‘red’, ‘you’]
+
++6 Функція для перевірки чи є рік високосним isLeapYear(2020)); // true isLeapYear(2021) // false
+
+7 функція преймаю необмежану кількість параметрів, якщо це число то складає його якщо будьякий інший тип, то нічого не робить
+sum(1,2,‘f’,‘4’,5,2) // 10 for of
+вирішити за допомогою функцій декларейшен та стрілочної функціі
+
+8 описати що буде виводитись якому консоль лозі і чому
+let a = 3
+fn3()
+let b = 11
+
+const fn1 = () => {
+  let b = 25
+  a = 2
+
+  const fn2 = () => {
+    a += 5
+    console.log('1', a + b)
+  }
+
+  console.log('2', a + b)
+  b = 44
+  return fn2
+}
+
+a = 5
+const callback = fn1()
+console.log('3' a + b)
+a = 33
+b = 22
+callback()
+console.log('4', a + b)
+callback()
+console.log('5', a + b)
+callback()
+console.log('6', a + b)
+function fn3() {
+  console.log('7', a + b)
+}
