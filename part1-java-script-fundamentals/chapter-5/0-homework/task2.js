@@ -1,4 +1,4 @@
-import isPalindrome from "./isPalindrome.js";
+import isPalindrome from "./isPalindrome2.js";
 
 console.log(isPalindrome(' a roza upala na lapu azora'));
 console.log(isPalindrome('ArozaupalanalApuazOra'));
