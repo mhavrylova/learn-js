@@ -101,3 +101,21 @@ img {
 .img_sm {
     width: 500px;
 }
+
+.menu-chapter {
+    display: none;
+}
+
+.menu-title-chapter {
+    padding-left: 16px;
+    cursor: pointer;
+}
+
+.menu-title-chapter:hover {
+    padding-left: 16px;
+    color: red;
+}
+
+a.homework {
+    color: green;
+}
