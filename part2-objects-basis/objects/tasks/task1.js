@@ -1,0 +1,10 @@
+let user = {};
+console.log('created: ', user);
+user.name = 'John';
+console.log('added name John: ', user);
+user.surname = 'Smith';
+console.log('added name Smith: ', user);
+user.name = 'Peter';
+console.log('changed name to Peter: ', user);
+delete user.name;
+console.log('deleted name: ', user);
