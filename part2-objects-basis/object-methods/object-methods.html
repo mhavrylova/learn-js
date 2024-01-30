@@ -8,12 +8,107 @@
 <body>
     <h2>Теорія</h2>
     <p>
-
+        Функція, яка є властивістю об’єкта, називається його методом.
     </p>
+    <code>
+        let user = {
+        <br>&nbsp;&nbsp;name: "Іван",
+        <br>&nbsp;&nbsp;age: 30
+        <br>};
+        <br>user.sayHi = function() {
+        <br>&nbsp;&nbsp;alert("Привіт!");
+        <br>};
+        <br>user.sayHi(); // Привіт!
+    </code>
+    <p>
+        Тут ми щойно використали Function Expression (функціональний вираз) для створення функції та присвоїли її властивості <span class="code">user.sayHi</span> об’єкта.
+        Потім ми викликали її завдяки <span class="code">user.sayHi()</span>. Отже, ми отримали метод sayHi об’єкта user.
+    </p>
+    <p>Також можна використовувати попередньо оголошену функцію як метод, наприклад:</p>
+    <code>
+        let user = {
+        <br>&nbsp;&nbsp;// ...
+        <br>};
+        <br>// first, declare
+        <br>function sayHi() {
+        <br>&nbsp;&nbsp;alert("Привіт!");
+        <br>}
+        <br>// then add as a method
+        <br>user.sayHi = sayHi;
+        <br>user.sayHi(); // Привіт!
+    </code>
+    <br>
+    <code>
+        // цей об’єкт робить те ж саме
+        <br>user = {
+        <br>&nbsp;&nbsp;sayHi: function() {
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;alert("Привіт!");
+        <br>&nbsp;&nbsp;}
+        <br>};
+        <br>// скорочений метод
+        <br>user = {
+        <br>&nbsp;&nbsp;sayHi() { // те ж саме що й "sayHi: function(){...}"
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;alert("Привіт!");
+        <br>&nbsp;&nbsp;}
+        <br>};
+    </code>
+    <p>
+        Для доступу до інформації всередині об’єкта метод може використовувати ключове слово <span class="code">this</span>.Значенням this є об’єкт “перед крапкою”, який використовується для виклику методу.
+    </p>
+    <code>
+        let user = {
+        <br>&nbsp;&nbsp;name: "Іван",
+        <br>&nbsp;&nbsp;age: 30,
+        <br>&nbsp;&nbsp;sayHi() {
+        <br>&nbsp;&nbsp;// "this" -- це "поточний об’єкт"
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;alert(this.name);
+        <br>&nbsp;&nbsp;}
+        <br>};
+        <br>user.sayHi(); // Іван
+        <br>// Тут під час виконання коду user.sayHi(), значенням this буде user.
+    </code>
+    <p>Можна було отримати доступ до об’єкта посилаючись на нього через зовнішню змінну user.name, але  Якщо ми вирішимо скопіювати user в іншу змінну, напр. admin = user перезаписати user чимось іншим, тоді цей код отримає доступ до неправильного об’єкта.</p>
+    <p><strong>Значення this обчислюється під час виконання і залежить від контексту.</strong></p>
+    <p>Ми можемо навіть викликати функцію взагалі без об’єкта, </p>
+    <code>
+        function sayHi() {
+        <br>&nbsp;&nbsp;alert(this);
+        <br>}
+        <br>sayHi(); // undefined - Якщо ми спробуємо звернутися до this.name трапиться помилка. (при "use strict"). Якщо нестрогий режим, то звернеться до глобального об'єкта window
+    </code>
+    <p>
+        Стрілкові функції не мають “свого” <span class="code">this</span>. Якщо ми посилаємось на <span class="code">this</span> з такої функції, його значення береться із зовнішньої “нормальної” функції.
+        Це особливість стрілкових функцій є корисною коли ми не хочемо мати окреме this, а лише взяти його із зовнішнього контексту.
+    </p>
+    <code>
+        let user = {
+        <br>&nbsp;&nbsp;firstName: "Ілля",
+        <br>&nbsp;&nbsp;sayHi() {
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;let arrow = () => alert(this.firstName);
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;arrow();
+        <br>&nbsp;&nbsp;}
+        <br>};
+        <br>user.sayHi(); // Ілля
+    </code>
     <h2>Задачі</h2>
     <div>
         <h4>Задача 1</h4>
-        <p></p>
+        <p>
+            Створіть об’єкт <span class="code">calculator</span> з трьома методами:
+
+            <span class="code">read()</span> запитує два значення та зберігає їх як властивості об’єкта з іменами a та b відповідно.
+            <span class="code">sum()</span> повертає суму збережених значень.
+            <span class="code">mul()</span> множить збережені значення і повертає результат.
+        </p>
+        <code>
+            let calculator = {
+            <br>&nbsp;&nbsp;// ... ваш код ...
+            <br>};
+            <br>
+            <br>calculator.read();
+            <br>alert( calculator.sum() );
+            <br>alert( calculator.mul() );
+        </code>
         <h5>
             <a href="https://github.com/mhavrylova/learn-js/blob/main/part2-objects-basis/object-methods/tasks/task1.html">
                 Рішення
@@ -21,6 +116,51 @@
         </h5>
         <p>
             <a href="tasks/task1.html">See Result</a>
+        </p>
+    </div>
+    <div>
+        <h4>Задача 2</h4>
+        <p>
+            Існує об’єкт ladder, що дозволяє підійматися вгору-вниз:
+        </p>
+        <code>
+            let ladder = {
+            <br>&nbsp;&nbsp;step: 0,
+            <br>&nbsp;&nbsp;up() {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;this.step++;
+            <br>&nbsp;&nbsp;},
+            <br>&nbsp;&nbsp;down() {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;this.step--;
+            <br>&nbsp;&nbsp;},
+            <br>&nbsp;&nbsp;showStep: function() { // показує поточний крок
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;alert( this.step );
+            <br>&nbsp;&nbsp;}
+            <br>};
+        </code>
+        <p>
+            Тепер, якщо нам потрібно зробити кілька викликів послідовно, можна зробити це так:
+        </p>
+        <code>
+            ladder.up();
+            <br>ladder.up();
+            <br>ladder.down();
+            <br>ladder.showStep(); // 1
+            <br>ladder.down();
+            <br>ladder.showStep(); // 0
+        </code>
+        <p>
+            Змініть код up, down і showStep так, щоб зробити доступним ланцюг викликів, наприклад:
+        </p>
+        <code>
+            ladder.up().up().down().showStep().down().showStep(); // shows 1 then 0
+        </code>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part2-objects-basis/object-methods/tasks/task2.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="tasks/task2.html">See Result</a>
         </p>
     </div>
 </body>
