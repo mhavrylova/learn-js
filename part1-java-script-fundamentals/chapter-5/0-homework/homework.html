@@ -2,9 +2,159 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Homework-chapter 5</title>
+    <link type="text/css" href="../../../style.css" rel="stylesheet">
 </head>
 <body>
+    <div>
+        <h4>Задача 1</h4>
+        <p>
+            функція обертаня рядка - reverseString(‘blabla’) // albalb
+        </p>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-5/0-homework/task1.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="task1.html">See Result</a>
+        </p>
+    </div>
+    <div>
+        <h4>Задача 2</h4>
+        <p>
+            напиши функці для перевірки паліндромів - isPalindrome(‘asdsa’) // true isPalindrome(‘assaa’) //false
+        </p>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-5/0-homework/task2.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="task2.html">See Result</a>
+        </p>
+    </div>
+    <div>
+        <h4>Задача 3</h4>
+        <p>
+            напиши функцію рандом яка повертає значеня від та до -> random(3,9)// 7
+        </p>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-5/0-homework/task3.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="task3.html">See Result</a>
+        </p>
+    </div>
+    <div>
+        <h4>Задача 4</h4>
+        <p>
+            напиши функцію генеруваня паролю -> const charset = ‘abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789’;
+            generatePassword(6) // d3DSl4
+        </p>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-5/0-homework/task4.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="task4.html">See Result</a>
+        </p>
+    </div>
+    <div>
+        <h4>Задача 5</h4>
+        <p>
+            розбиття строки на слова stringToWords(‘bla sky red you’) // [‘bla’, ‘sky’, ‘red’, ‘you’]
+        </p>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-5/0-homework/task5.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="task5.html">See Result</a>
+        </p>
+    </div>
+    <div>
+        <h4>Задача 6</h4>
+        <p>
+            Функція для перевірки чи є рік високосним isLeapYear(2020)); // true isLeapYear(2021) // false
+        </p>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-5/0-homework/task6.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="task6.html">See Result</a>
+        </p>
+    </div>
+    <div>
+        <h4>Задача 7</h4>
+        <p>
+            функція преймаю необмежану кількість параметрів, якщо це число то складає його якщо будьякий інший тип, то нічого не робить
+            sum(1,2,‘f’,‘4’,5,2) // 10 for of
+            <br>вирішити за допомогою функцій декларейшен та стрілочної функціі
+        </p>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-5/0-homework/task7.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="task7.html">See Result</a>
+        </p>
+    </div>
+    <div>
+        <h4>Задача 8</h4>
+        <p>
+            описати що буде виводитись якому консоль лозі і чому
+        </p>
+        <code>
+            let a = 3
+            <br>fn3()
+            <br>let b = 11
+            <br>
+            <br>const fn1 = () => {
+            <br>&nbsp;&nbsp;let b = 25
+            <br>&nbsp;&nbsp;a = 2
+            <br>
+            <br>&nbsp;&nbsp;const fn2 = () => {
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;a += 5
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;console.log('1', a + b)
+            <br>&nbsp;&nbsp;}
+            <br>
+            <br>&nbsp;&nbsp;console.log('2', a + b)
+            <br>&nbsp;&nbsp;b = 44
+            <br>&nbsp;&nbsp;return fn2
+            <br>}
+            <br>
+            <br>a = 5
+            <br>const callback = fn1()
+            <br>console.log('3', a + b)
+            <br>a = 33
+            <br>b = 22
+            <br>callback()
+            <br>console.log('4', a + b)
+            <br>callback()
+            <br>console.log('5', a + b)
+            <br>callback()
+            <br>console.log('6', a + b)
+            <br>function fn3() {
+            <br>&nbsp;&nbsp;console.log('7', a + b)
+            <br>}
+        </code>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part1-java-script-fundamentals/chapter-5/0-homework/task8.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="task8.html">See Result</a>
+        </p>
+    </div>
 
 </body>
 </html>
