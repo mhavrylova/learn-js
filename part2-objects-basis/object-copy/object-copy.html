@@ -6,22 +6,100 @@
     <link type="text/css" href="../../style.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Теорія</h2>
+    <h2>Копіювання об’єктів та лінки</h2>
     <p>
-
+        Об'єкти, на відміну від примітивів, зберігаються і копіюються по ссилці, тоді як примітиви копіюються завжди як ціле значення.
+        Тобто в примітивах коли ми змінній даємо значення іншої змінної, то маємо дві незалежні змінні, але з об'єктами це інакше - Змінна зберігає не сам об’єкт, а його “адресу в пам’яті” – іншими словами “посилання” на нього.
+        <br> Ми можемо використати будь-яку змінну для доступу до об’єкта та модифікації його вмісту:
     </p>
-    <h2>Задачі</h2>
-    <div>
-        <h4>Задача 1</h4>
-        <p></p>
-        <h5>
-            <a href="https://github.com/mhavrylova/learn-js/blob/main/part2-objects-basis/object-copy/tasks/task1.html">
-                Рішення
-            </a>
-        </h5>
-        <p>
-            <a href="tasks/task1.html">See Result</a>
-        </p>
-    </div>
+    <code>
+        let user = { name: 'Іван' };
+        <br>let admin = user;
+        <br>admin.name = 'Петро'; // змінено за посиланням зі змінної "admin"
+        <br>alert(user.name); // 'Петро', зміни видно з посилання зі змінної "user"
+    </code>
+    <p>Два об’єкти рівні, лише якщо це той самий об’єкт.</p>
+    <h3>Клонування та злиття об’єктів</h3>
+    <p>якщо нам потрібно створити копію, клон об’єкта, то нам потрібно створити новий об’єкт і відтворити структуру чинного, перебираючи та копіюючи його властивості.</p>
+    <code>
+        let user = {
+        <br>name: "Микола",
+        <br>age: 30
+        <br>};
+
+        <br>let clone = {}; // новий порожній об'єкт
+
+        <br>// давайте скопіюємо в нього всі властивості з user
+        <br>for (let key in user) {
+        <br>clone[key] = user[key];
+        <br>}
+
+        <br>// тепер clone є повністю незалежним об'єктом з тим самим вмістом
+        <br>clone.name = "Петро"; // змінив дані в ньому
+
+        <br>alert( user.name ); // значення "Микола" все ще в оригінальному об'єкті
+    </code>
+    <p>
+        Ми також можемо скористатися методом <span class="code">Object.assign(dest, ...sources)</span> Перший аргумент dest є цільовим об’єктом.  Подальші аргументи – це список вихідних об’єктів.
+        <br>Він копіює властивості всіх вихідних об’єктів у цільовий dest, а потім повертає його як результат.
+    </p>
+    <p>Наприклад, у нас є об’єкт user, додаймо до нього пару властивостей з дозволами:</p>
+    <code>
+        let user = { name: "Микола" };
+
+        <br>let permissions1 = { canView: true };
+        <br>let permissions2 = { canEdit: true };
+
+        <br>// копіює всі властивості з permissions1 та permissions2 в user
+        <br>Object.assign(user, permissions1, permissions2);
+
+        <br>// Тепер user = { name: "Микола", canView: true, canEdit: true }
+        <br>alert(user.name); // Микола
+        <br>alert(user.canView); // true
+        <br>alert(user.canEdit); // true
+    </code>
+    <p>Якщо скопійована назва властивості вже існує, вона буде перезаписана:</p>
+    <p>Ми також можемо використовувати Object.assign, щоб виконати просте клонування об’єкта:</p>
+    <code>
+        let user = {
+        <br> name: "Микола",
+        <br>age: 30
+        <br>};
+
+        <br>let clone = Object.assign({}, user);
+
+        <br>alert(clone.name); // Микола
+        <br> alert(clone.age); // 30
+    </code>
+    <p>Досі ми припускали, що всі властивості user є примітивами. Але властивості можуть бути посиланнями на інші об’єкти.</p>
+    <code>
+        let user = {
+        <br>name: "Микола",
+        <br>sizes: {
+        <br> height: 182,
+        <br> width: 50
+        <br> }
+        <br>};
+    </code>
+    <p> Треба використати цикл клонування, який перевіряє кожне значення user[key] і, якщо це об’єкт, то також повторює його структуру. Це називається “глибоке клонування(deep cloning)” або “структурне клонування(structured cloning)”.
+        <br>Існує метод structuredClone, який реалізує таке глибоке клонування.
+    </p>
+    <code>
+        let user = {
+        <br>name: "Микола",
+        <br>sizes: {
+        <br>height: 182,
+        <br>width: 50
+        <br>}
+        <br>};
+
+        <br>let clone = structuredClone(user);
+
+        <br>alert( user.sizes === clone.sizes ); // false, різні об'єкти
+
+        <br>// user та clone тепер абсолютно не пов'язані між собою
+        <br>user.sizes.width = 60;    // тепер змінюємо властивість в одному місці
+        <br>alert(clone.sizes.width); // 50, інше місце не пов'язане з попереднім
+    </code>
 </body>
 </html>

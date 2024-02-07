@@ -8,12 +8,86 @@
 <body>
     <h2>Теорія</h2>
     <p>
-
+        Щоб створити багато однотипних об’єктів, таких як, наприклад, користувачі чи елементи меню, використовють функцію-конструктор та оператор "new".
+        Технічно це є звичайною функіцєю, але для правильності вона пишеться з великої літери і виконується обов'язково з оператором "new".
     </p>
+    <code>
+        function User(name) {
+        <br>&nbsp;&nbsp;this.name = name;
+        <br>&nbsp;&nbsp;this.isAdmin = false;
+        <br>}
+        <br>
+        <br>let user = new User("Джек");
+        <br>
+        <br>alert(user.name); // Джек
+        <br>alert(user.isAdmin); // false
+    </code>
+    <p>
+        Коли функція виконується з new, відбуваються наступні кроки:
+        <br>1 - Створюється новий порожній об’єкт, якому присвоюється <span class="code">this</span>.
+        <br>2 - Виконується тіло функції. Зазвичай воно модифікує <span class="code">this</span>, додає до нього нові властивості.
+        <br>3 - Повертається значення <span class="code">this</span>.
+    </p>
+    <p>
+        Тепер, якщо ми хочемо створити інших користувачів, ми можемо викликати <span class="code">new User("Ганна")</span>, <span class="code">new User("Аліса"</span>) тощо. Така конструкція значно коротша, ніж використання літералів кожного разу, а також легша для читання.
+        Це і є основною метою конструкторів – зручне перевикористання коду зі створення об’єктів.
+    </p>
+    <p>
+        Зазвичай конструктори не мають інструкції return. Їх завдання – записати усе необхідне у this, яке автоматично стане результатом.
+        Але якщо є інструкція return, то застосовується просте правило то, якщо return викликається з об’єктом, тоді замість this буде повернено цей об’єкт.
+        Якщо return викликається з примітивом, примітив ігнорується. Тобто, return з об’єктом повертає цей об’єкт, у всіх інших випадках повертається this.
+    </p>
+    <code>
+        function BigUser() {
+        <br>&nbsp;&nbsp;this.name = "Джон";
+        <br>&nbsp;&nbsp;return { name: "Ґодзілла" };  // <-- повертає цей об’єкт
+        <br>}
+        <br>
+        <br>alert( new BigUser().name );  // Ґодзілла, отримали цей об’єкт
+    </code>
+    <br>
+    <code>
+        function SmallUser() {
+        <br>&nbsp;&nbsp;this.name = "Джон";
+        <br>&nbsp;&nbsp;return; // <-- повертає this
+        <br>}
+        <br>
+        <br>alert( new SmallUser().name );  // Джон
+    </code>
+    <p>
+        ми можемо додати до this не лише властивості, але й методи
+    </p>
+    <code>
+        function User(name) {
+        <br>&nbsp;&nbsp;this.name = name;
+        <br>&nbsp;&nbsp;this.sayHi = function() {
+        <br>&nbsp;&nbsp;alert( "Моє ім’я: " + this.name );
+        <br>};
+        <br>}
+        <br>let john = new User("Джон");
+        <br>john.sayHi(); // Моє ім’я: Джон
+        <br>/*
+        <br>john = {
+        <br>&nbsp;&nbsp;name: "Джон",
+        <br>&nbsp;&nbsp;sayHi: function() { ... }
+        <br>}
+        <br>*/
+    </code>
     <h2>Задачі</h2>
     <div>
         <h4>Задача 1</h4>
-        <p></p>
+        <p>
+            Створіть функцію-конструктор Calculator, який створює об’єкти з трьома методами:
+            <br>read() запитує два значення за допомогою prompt і записує їх у властивості об’єкта з іменами a та b.
+            <br>sum() повертає суму цих властивостей.
+            <br>mul() повертає результат множення даних властивостей.
+            <code>
+                let calculator = new Calculator();
+                <br>calculator.read();
+                <br>alert( "Sum=" + calculator.sum() );
+                <br>alert( "Mul=" + calculator.mul() );
+            </code>
+        </p>
         <h5>
             <a href="https://github.com/mhavrylova/learn-js/blob/main/part2-objects-basis/constructor-new/tasks/task1.html">
                 Рішення
@@ -21,6 +95,23 @@
         </h5>
         <p>
             <a href="tasks/task1.html">See Result</a>
+        </p>
+    </div>
+    <div>
+        <h4>Задача 2</h4>
+        <p>Створіть функцію-конструктор Accumulator(startingValue).
+            <br>Об’єкт, який він створює повинен:
+            <br> Зберігати “поточне значення” у властивості value. Початкове значення має значення аргументу конструктора startingValue.
+            Метод read() повинен використовувати prompt для зчитування нового числа та додавати його до value.
+            Іншими словами, властивість value – це сума всіх введених користувачем значень разом із початковим значенням startingValue.
+        </p>
+        <h5>
+            <a href="https://github.com/mhavrylova/learn-js/blob/main/part2-objects-basis/constructor-new/tasks/task2.html">
+                Рішення
+            </a>
+        </h5>
+        <p>
+            <a href="tasks/task2.html">See Result</a>
         </p>
     </div>
 </body>
