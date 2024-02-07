@@ -7,12 +7,19 @@ const isEmpty = (obj) => {
     return true;
 }
 
+
 let emptyObj = {};
 let withKeysObj = {
     one: 1,
     two: 2,
     three: 3,
 };
+
+// ще можно взяти всі ключи або значення обʼєкту і перевірити довжину
+// const arrOfKeys = Object.key(emptyObj)
+// Boolean(arrOfKeys.length)
+//
+// Object.values(withKeysObj).length === 3 // true
 
 console.log(emptyObj, isEmpty(emptyObj));
 console.log(withKeysObj, isEmpty(withKeysObj));
