@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+    <link type="text/css" href="../style.css" rel="stylesheet">
+</head>
+<body>
+<script type="module" defer src="polyfill-some.js"></script>
+<h3>Написати поліфіл для some</h3>
+<p><span class="code">arr.some(callback(element[, index[, array]])[, thisArg])</span>) – проверяет, удовлетворяет ли
+    какой-либо элемент массива условию, заданному в передаваемой функции.</p>
+<p>Метод some() вызывает переданную функцию callback один раз для каждого элемента, присутствующего в массиве до тех
+    пор, пока не найдёт такой, для которого callback вернёт истинное значение (значение, становящееся равным true при
+    приведении его к типу Boolean). Если такой элемент найден, метод some() немедленно вернёт true. В противном случае,
+    если callback вернёт false для всех элементов массива, метод some() вернёт false. Функция callback вызывается только
+    для индексов массива, имеющих присвоенные значения; она не вызывается для индексов, которые были удалены или которым
+    значения никогда не присваивались.</p>
+<p>Оригінал</p>
+<code>
+    const array = [1, 2, 3, 4, 5];
+    <br>const even = (element) => element % 2 === 0;  // Checks whether an element is even
+    <br>console.log(array.some(even)); // Expected output: true
+</code>
+
+<h3>Рішення 1 з прототипом</h3>
+<code>
+    Array.prototype.mySome = function(callbackFn) {
+    <br>&nbsp;&nbsp;for (let i = 0; i < this.length; i++) {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;if (callbackFn(this[i], i, this)){
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;}
+    <br>&nbsp;&nbsp;}
+    <br>&nbsp;&nbsp;return false;
+    <br>}
+</code>
+
+<h3>Рішення 2 з функцією</h3>
+<code>
+    let createSome = function (arr, callbackFn){
+    <br>&nbsp;&nbsp;for (let i = 0; i < arr.length; i++) {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;if(callbackFn(arr[i], i, arr)){
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;}
+    <br>&nbsp;&nbsp;}
+    <br>&nbsp;&nbsp;return false;
+    <br>}
+</code>
+
+<h3>Задача для прикладу</h3>
+<p>
+    Перевірити чи є в масиві  <span class="code">["Harry", "Ron", "Hermione", "Dambldore", "Snape"]</span> ім'я Hermione?
+</p>
+
+<h3>Результати</h3>
+<h2>Відкрий консоль</h2>
+
+<p>1 - використала вбудований метод forEach:</p>
+<code>
+    let resultWithNativeSome = arrCharacters.some(function (item, index) {
+    <br>&nbsp;&nbsp;return item === "Hermione";
+    <br>});
+</code>
+
+<p>2 - використала написаний через прототип метод myАorEach</p>
+<code>
+    let resultWithPolyfillSomeProto = arrCharacters.mySome(function (item) {
+    <br>&nbsp;&nbsp;return item === "Hermione";
+    <br>})
+</code>
+
+<p>3 - використала написаний через функцію метод forEach</p>
+<code>
+    let resultWithPolyfillSomeFoo = createSome(arrCharacters, function (item) {
+    <br>&nbsp;&nbsp;return item === "Hermione";
+    <br>})
+</code>
+</body>
+</html>

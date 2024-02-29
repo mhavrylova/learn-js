@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+    <link type="text/css" href="../style.css" rel="stylesheet">
+</head>
+<body>
+<script type="module" defer src="polyfill-filter.js"></script>
+<h3>Написати поліфіл для filter</h3>
+<p><span class="code">arr.filter(fn)</span> – ищет элементи, которые заставят колбек функцию вернуть true.</p>
+<p>Метод filter() вызывает переданную функцию callback один раз для каждого элемента, присутствующего в массиве, и
+    создаёт новый массив со всеми значениями, для которых функция callback вернула значение, которое может быть
+    приведено к true. Функция callback вызывается только для индексов массива с уже определёнными значениями; она не
+    вызывается для индексов, которые были удалены или которым значения никогда не присваивались. Элементы массива, не
+    прошедшие проверку функцией callback, просто пропускаются и не включаются в новый массив.</p>
+<p>Оригінал</p>
+<code>
+    let results = arr.filter(function(item, index, array) {
+    <br>&nbsp;&nbsp;// если `true` -- элемент добавляется к results и перебор продолжается
+    <br>&nbsp;&nbsp;// возвращается пустой массив в случае, если ничего не найдено
+    <br>});
+</code>
+
+<h3>Рішення 1 з прототипом</h3>
+<code>
+    Array.prototype.myFilter = function (callbackFn) {
+    <br>&nbsp;&nbsp;let arr = [];
+    <br>&nbsp;&nbsp;for (let i = 0; i < this.length; i++) {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;if (callbackFn(this[i], i, this)) {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr.push(this[i]);
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;}
+    <br>&nbsp;&nbsp;}
+    <br>return arr;
+    <br>}
+</code>
+
+<h3>Рішення 2 з функцією</h3>
+<code>
+    let createMyFilter = function (arr, callbackFn){
+    <br>&nbsp;&nbsp;let newArr = [];
+    <br>&nbsp;&nbsp;for (let i = 0; i < arr.length; i++) {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;if(callbackFn(arr[i], i, arr)) {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newArr.push(arr[i]);
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;}
+    <br>&nbsp;&nbsp;}
+    <br>return newArr;
+    <br>}
+</code>
+
+<h3>Задача для прикладу</h3>
+<p>
+    Вивести в консоль всі ПАРНІ елементи масиву <span class="code">let arrNumbers = [2, 3, 4, 12, 13, 14, 5, 6, 7, 12, 43, 12]</span>
+</p>
+
+<h3>Результати</h3>
+<h2>Відкрий консоль</h2>
+
+<p>1 - використала вбудований метод filter:</p>
+<code>
+    let resultWithNativeFilter = arrNumbers.filter(function (item) {
+    <br>&nbsp;&nbsp;return (item % 2 === 0);
+    <br>});
+</code>
+
+<p>2 - використала написаний через прототип метод filter</p>
+<code>
+    let resultWithPolyfillFilterProto = arrNumbers.myFilter(function (item) {
+    <br>&nbsp;&nbsp;return (item % 2 === 0);
+    <br>})
+</code>
+
+<p>3 - використала написаний через функцію метод filter</p>
+<code>
+    let resultWithPolyfillFilterFoo = createMyFilter(arrNumbers, function (item) {
+    <br>&nbsp;&nbsp;return (item % 2 === 0);
+    <br>})
+</code>
+</body>
+</html>

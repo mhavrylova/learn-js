@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+    <link type="text/css" href="../style.css" rel="stylesheet">
+</head>
+<body>
+<script type="module" defer src="polyfill-forEach.js"></script>
+<h3>Написати поліфіл для forEach</h3>
+<p><span class="code">arr.forEach(callback)</span>) – вызывает func для каждого элемента. Ничего не возвращает.</p>
+<p>Метод forEach() выполняет функцию callback один раз для каждого элемента, находящегося в массиве в порядке
+    возрастания. Она не будет вызвана для удалённых или пропущенных элементов массива. Однако, она будет вызвана для
+    элементов, которые присутствуют в массиве и имеют значение undefined.</p>
+<p>Оригінал</p>
+<code>
+    var arr = ["Яблоко", "Апельсин", "Груша"];
+    <br>arr.forEach(function(item, i, arr) {
+    <br>&nbsp;&nbsp;alert( i + ": " + item + " (массив:" + arr + ")" );
+    <br>});
+</code>
+
+<h3>Рішення 1 з прототипом</h3>
+<code>
+    Array.prototype.myForEach = function (callbackFn) {
+    <br>&nbsp;&nbsp;for (let i = 0; i < this.length; i++) {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;callbackFn(this[i], i, this);
+    <br>&nbsp;&nbsp;}
+    <br>}
+</code>
+
+<h3>Рішення 2 з функцією</h3>
+<code>
+    let createForEach = function (arr, callbackFn){
+    <br>&nbsp;&nbsp;for (let i = 0; i < arr.length; i++) {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;callbackFn(arr[i], i, arr);
+    <br>&nbsp;&nbsp;}
+    <br>}
+</code>
+
+<h3>Задача для прикладу</h3>
+<p>
+    Вивести в консоль всі елементи масиву <span class="code">["January", "February", "March", "April", "May"]</span>, в
+    якому перед кожним місяцем буде стояти його індекс
+</p>
+
+<h3>Результати</h3>
+<h2>Відкрий консоль</h2>
+
+<p>1 - використала вбудований метод forEach:</p>
+<code>
+    let resultWithNativeForEach = arrMonths.forEach(function (item, index) {
+    <br>&nbsp;&nbsp;console.log(`${index}-${item}`);
+    <br>});
+</code>
+
+<p>2 - використала написаний через прототип метод myАorEach</p>
+<code>
+    let resultWithPolyfillForEachProto = arrMonths.myForEach(function (item, index) {
+    <br>&nbsp;&nbsp;console.log(`${index}-${item}`);
+    <br>})
+</code>
+
+<p>3 - використала написаний через функцію метод forEach</p>
+<code>
+    let resultWithPolyfillForEachFoo = createForEach(arrMonths, function (item, index){
+    <br>&nbsp;&nbsp;console.log(`${index}-${item}`);
+    <br>});
+</code>
+</body>
+</html>

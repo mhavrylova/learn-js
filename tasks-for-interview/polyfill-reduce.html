@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+    <link type="text/css" href="../style.css" rel="stylesheet">
+</head>
+<body>
+<script type="module" defer src="polyfill-reduce.js"></script>
+<h3>Написати поліфіл для reduce</h3>
+<p><span class="code">array.reduce(callback[, initialValue])</span> – применяет функцию reducer к каждому элементу
+    массива (слева-направо), возвращая одно результирующее значение.</p>
+<p>
+    Аргументы функции <span class="code">callback(previousValue, currentItem, index, arr)</span>:
+    <span class="code">previousValue</span> – последний результат вызова функции, он же «промежуточный результат».
+    <span class="code">currentItem</span> – текущий элемент массива, элементы перебираются по очереди слева-направо.
+    <span class="code">index</span> – номер текущего элемента.
+    <span class="code">arr</span> – обрабатываемый массив.
+</p>
+<p>
+    Кроме callback, методу можно передать «начальное значение» – аргумент initialValue. Если он есть, то на первом
+    вызове значение previousValue будет равно initialValue, а если у reduce нет второго аргумента, то оно равно первому
+    элементу массива, а перебор начинается со второго.
+</p>
+<p>Оригінал</p>
+<p>Без initialValue</p>
+<code>
+    [0, 1, 2, 3, 4].reduce(function (previousValue, currentValue, index, array) {
+    <br>&nbsp;&nbsp;return previousValue + currentValue;
+    <br>}); // 10
+</code>
+<p>З initialValue</p>
+<code>
+    [0, 1, 2, 3, 4].reduce(function (accumulator, currentValue, index, array) {
+    <br>&nbsp;&nbsp;return accumulator + currentValue;
+    <br>}, 10); // 20
+</code>
+
+<h3>Рішення з прототипом</h3>
+<code>
+    Array.prototype.myReduce = function (callbackFn, initValue) {
+    <br>&nbsp;&nbsp;let previousValue;
+    <br>&nbsp;&nbsp;if (initValue !== undefined) {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;previousValue = initValue;
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 0; i < this.length; i++) {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;previousValue = callbackFn(previousValue, this[i], i, this);
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;}
+    <br>&nbsp;&nbsp;} else {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;previousValue = this[0];
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 1; i < this.length; i++) {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;previousValue = callbackFn(previousValue, this[i], i, this);
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;}
+    <br>&nbsp;&nbsp;}
+    <br>&nbsp;&nbsp;return previousValue;
+    <br>}
+</code>
+
+<h3>Задача для прикладу</h3>
+<p>
+    Просумувати всі числа масиву <span class="code">[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span>. 1 варіант - з initialValue
+    5, другий - без initialValue.
+</p>
+
+<h3>Результати</h3>
+<h2>Відкрий консоль</h2>
+
+<p>1.2 - використала вбудований метод reduce з initialValue:</p>
+<code>
+    let resultWithNativeReduceWithInit = arrNumbers.reduce(function (previousValue, currentValue, index, array) {
+    <br>&nbsp;&nbsp;return previousValue + currentValue;
+    <br>}, 5);
+</code>
+
+<p>1.2 - використала вбудований метод reduce без initialValue:</p>
+<code>
+    let resultWithNativeReduce = arrNumbers.reduce(function (previousValue, currentValue, index, array) {
+    <br>&nbsp;&nbsp;return previousValue + currentValue;
+    <br>});
+</code>
+
+<p>2.1 - використала написаний через прототип метод reduce з initialValue</p>
+<code>
+    let resultWithPolyfillReduceProtoWithInit = arrNumbers.myReduce(function (previousValue, currentValue) {
+    <br>&nbsp;&nbsp;return previousValue + currentValue;
+    <br>}, 5)
+</code>
+
+<p>2.2 - використала написаний через прототип метод reduce без initialValue</p>
+<code>
+    let resultWithPolyfillReduceProto = arrNumbers.myReduce(function (previousValue, currentValue) {
+    <br>&nbsp;&nbsp;return previousValue + currentValue;
+    <br>})
+</code>
+</body>
+</html>
