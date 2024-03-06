@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+    <link type="text/css" href="../style.css" rel="stylesheet">
+</head>
+<body>
+<script type="module" defer src="polyfill-map.js"></script>
+<h3>Написати поліфіл для map</h3>
+<p>map вызывает функцию для каждого элемента массива и возвращает массив результатов выполнения этой функции.</p>
+<p>Метод map вызывает переданную функцию callback один раз для каждого элемента, в порядке их появления и конструирует
+    новый массив из результатов её вызова. Функция callback вызывается только для индексов массива, имеющих присвоенные
+    значения, включая undefined. Она не вызывается для пропущенных элементов массива (то есть для индексов, которые
+    никогда не были заданы, которые были удалены или которым никогда не было присвоено значение.</p>
+<p>Оригінал</p>
+<code>
+    let result = arr.map(function(item, index, array) {
+    <br>// возвращается новое значение вместо элемента
+    <br>});
+</code>
+
+<h3>Рішення 1 з прототипом</h3>
+<code>
+    Array.prototype.myMap = function(callbackFn) {
+    <br>&nbsp;&nbsp;let arr = [];
+    <br>&nbsp;&nbsp;for (let i = 0; i < this.length; i++) {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;arr.push(callbackFn(this[i], i, this));
+    <br>&nbsp;&nbsp;}
+    <br>&nbsp;&nbsp;return arr;
+    <br>}
+</code>
+<h3>Опис</h3>
+<div>
+    <p>
+        <span class="code">Array.prototype.myMap = function(callbackFn)</span>: Цей рядок додає новий метод myMap до
+        прототипу Array, що дозволяє використовувати цей метод на будь-якому масиві в програмі.
+    </p>
+    <p>
+        <span class="code">let arr = [];:</span> Створюється порожній масив arr, в якому будуть зберігатися результати
+        викликів функції callbackFn.
+    </p>
+    <p>
+        <span class="code">for (let i = 0; i < this.length; i++) {</span>: Цикл for проходить крізь кожен елемент
+        масиву, використовуючи вбудоване свойство length.
+    </p>
+    <p>
+        <span class="code">arr.push(callbackFn(this[i], i, this));</span>: Для кожного елемента масиву викликається
+        функція callbackFn з трьома параметрами:
+    </p>
+    <p>
+        <span class="code">this[i]</span>: Поточний елемент масиву.
+    </p>
+    <p>
+        <span class="code">i</span>: Індекс поточного елемента масиву.
+    </p>
+    <p>
+        <span class="code">this</span>: Сам масив.
+    </p>
+    <p>
+        Результат виклику цієї функції додається до масиву arr за допомогою методу push.
+    </p>
+    <p>
+        <span class="code">return arr;</span>: Після того, як всі елементи масиву були оброблені, повертається новий
+        масив arr, який містить результати викликів callbackFn для кожного елемента вихідного масиву.
+    </p>
+</div>
+
+<h3>Рішення 2 з функцією</h3>
+<code>
+    let createMap = function (initArray, callbackFn) {
+    <br>&nbsp;&nbsp;let arr = [];
+    <br>&nbsp;&nbsp;for (let i = 0; i < initArray.length; i++) {
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;arr.push(callbackFn(initArray[i], i, initArray));
+    <br>&nbsp;&nbsp;}
+    <br>&nbsp;&nbsp;return arr;
+    <br>}
+</code>
+
+<h3>Задача для прикладу</h3>
+<p>
+    З масиву <span class="code">["January", "February", "March", "April", "May"]</span> створити новий масив, в якому
+    перед кожним місяцев буде стояти його числове значення (1-Січень, 2-Лютий, ...)
+</p>
+
+<h3>Результати</h3>
+<h2>Відкрий консоль</h2>
+
+<p>1 - використала вбудований метод map:</p>
+<code>
+    let resultWithNativeMap = arrMonths.map(function(item, index) {
+    <br>&nbsp;&nbsp;return `${index+1}-${item}`;
+    <br>});
+</code>
+
+<p>2 - використала написаний через прототип метод myMap</p>
+<code>
+    let resultWithPolyfillMap = arrMonths.myMap(function(item, index) {
+    <br>&nbsp;&nbsp;return `${index+1}-${item}`;
+    <br>});
+</code>
+
+<p>3 - використала написаний через функцію метод mapMy</p>
+<code>
+    let resultWithPolyfillMapFoo = createMap(arrMonths, function(item, index) {
+    <br>&nbsp;&nbsp;return `${index+1}-${item}`;
+    <br>});
+</code>
+</body>
+</html>
